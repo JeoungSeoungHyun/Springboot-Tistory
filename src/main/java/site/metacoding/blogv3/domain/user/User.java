@@ -28,7 +28,9 @@ public class User {
     @Id
     private Integer id;
 
-    @Column(length = 100, nullable = false, unique = true)
+    // private String role; // admin, manager, guest, user 와 같이 권한을 준다.
+
+    @Column(length = 12, nullable = false, unique = true)
     private String username;
 
     // 그대로 넣으면 안되니까 SHA256(해쉬 알고리즘)을 사용 = > 이렇게 안하면 시큐리티가 거부
