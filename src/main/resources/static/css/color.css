@@ -7,6 +7,10 @@
     background-color: rgb(185,185,185);
 }
 
+.my_bg_error {
+    background-color: rgb(250, 200, 200);
+}
+
 .my_bg_success {
     background-color: rgb(30,180,159);
 }

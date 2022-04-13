@@ -1,20 +1,19 @@
 package site.metacoding.blogv3.web;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.blogv3.handler.ex.CustomException;
 import site.metacoding.blogv3.service.UserService;
-import site.metacoding.blogv3.web.dto.user.JoinReqDto;
+import site.metacoding.blogv3.util.UtilValid;
+import site.metacoding.blogv3.web.user.JoinReqDto;
+import site.metacoding.blogv3.web.user.PasswordResetReqDto;
 
 @RequiredArgsConstructor
 @Controller
@@ -35,22 +34,36 @@ public class UserController {
     @PostMapping("join")
     public String join(@Valid JoinReqDto joinReqDto, BindingResult bindingResult) {
 
-        if (bindingResult.hasErrors()) {
+        // System.out.println("조인디티오 : " + joinReqDto.toString());
 
-            Map<String, String> errorMap = new HashMap<>();
-            for (FieldError fe : bindingResult.getFieldErrors()) {
-                // System.out.println(fe.getField());
-                // System.out.println(fe.getDefaultMessage());
-                errorMap.put(fe.getField(), fe.getDefaultMessage());
-            }
-            // data 리턴인지 html 리턴인지 구분해준다.
-            throw new CustomException(errorMap.toString());
-        }
-
+        UtilValid.요청에러처리(bindingResult);
         // 핵심로직
 
         userService.회원가입(joinReqDto.toEntity());
 
+        return "redirect:/login-form";
+    }
+
+    @GetMapping("api/user/username/same-check")
+    public ResponseEntity<?> usermaeSameCheck(String username) {
+
+        // User user = userService.아이디확인(username);
+        boolean isNotSame = userService.유저네임중복체크(username); // true(같지 않다.)
+        return new ResponseEntity<>(isNotSame, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/user/password-reset-form")
+    public String passwordResetForm() {
+        return "user/passwordResetForm";
+    }
+
+    @PostMapping("/user/password-reset")
+    public String passwordReset(@Valid PasswordResetReqDto passwordResetReqDto, BindingResult bindingResult) {
+
+        UtilValid.요청에러처리(bindingResult);
+
+        userService.패스워드초기화(passwordResetReqDto);
         return "redirect:/login-form";
     }
 
