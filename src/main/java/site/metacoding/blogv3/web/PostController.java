@@ -15,7 +15,7 @@ import site.metacoding.blogv3.web.dto.post.PostRespDto;
 @Controller
 public class PostController {
 
-    // 카테고리와 관련된 게시글의 정보도 같이 들고 가야하기 때문에 CategorySerivce가 아닌 PostService에서 처리
+    // 카테고리와 게시글의 정보도 같이 들고 가야하기 때문에 CategorySerivce가 아닌 PostService에서 처리
     private final PostService postService;
 
     @GetMapping("/user/{id}/post")
