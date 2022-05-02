@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -51,6 +52,11 @@ public class UserController {
         boolean isNotSame = userService.유저네임중복체크(username); // true(같지 않다.)
         return new ResponseEntity<>(isNotSame, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/user/{id}")
+    public String updateForm(@PathVariable Integer id) {
+        return "/user/joinForm";
     }
 
     @GetMapping("/user/password-reset-form")

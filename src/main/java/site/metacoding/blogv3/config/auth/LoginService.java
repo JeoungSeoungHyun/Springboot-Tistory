@@ -20,6 +20,8 @@ public class LoginService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+        System.out.println("유저네임 : " + username);
+
         Optional<User> userOp = userRepository.FindByUsername(username);
 
         if (userOp.isPresent()) {
