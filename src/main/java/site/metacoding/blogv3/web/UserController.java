@@ -37,8 +37,8 @@ public class UserController {
         // System.out.println("조인디티오 : " + joinReqDto.toString());
 
         UtilValid.요청에러처리(bindingResult);
-        // 핵심로직
 
+        // 핵심로직
         userService.회원가입(joinReqDto.toEntity());
 
         return "redirect:/login-form";

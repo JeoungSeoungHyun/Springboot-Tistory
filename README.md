@@ -13,7 +13,7 @@
 ### 2. DB 설정
 ```sql
 CREATE USER 'green'@'%' IDENTIFIED BY 'green1234';
-CREATE DATABASE greendb;
+CREATE DATABASE greendb2;
 GRANT ALL PRIVILEGES ON greendb.* TO 'green'@'%';
 ```
 

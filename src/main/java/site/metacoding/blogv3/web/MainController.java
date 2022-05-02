@@ -1,7 +1,5 @@
 package site.metacoding.blogv3.web;
 
-import java.security.Principal;
-
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,15 +12,9 @@ public class MainController {
 
     @GetMapping({ "/" })
     public String main(@AuthenticationPrincipal LoginUser loginUser) {
-        if (loginUser != null) {
-
-            System.out.println(loginUser.getUser().getUsername());
-
-            LoginUser lu = (LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            System.out.println(lu.getUser().getUsername());
-            return "redirect:/user/" + loginUser.getUser().getId() + "/post";
-        } else {
-            return "main";
-        }
+        // 로그인시는 해당유저의 게시글목록으로 이동(SuccessfulHandler를 통해)
+        // 메인페이지는 따로 존재
+        return "main";
     }
+
 }

@@ -19,12 +19,9 @@ public class LoginService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("username : " + username);
-        System.out.println("DB에 확인 들어간다");
 
         Optional<User> userOp = userRepository.FindByUsername(username);
 
-        System.out.println(1);
         if (userOp.isPresent()) {
             return new LoginUser(userOp.get());
         }
