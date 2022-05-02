@@ -11,7 +11,7 @@ import site.metacoding.blogv3.domain.user.User;
 import site.metacoding.blogv3.domain.user.UserRepository;
 import site.metacoding.blogv3.handler.ex.CustomException;
 import site.metacoding.blogv3.util.email.EmailUtil;
-import site.metacoding.blogv3.web.user.PasswordResetReqDto;
+import site.metacoding.blogv3.web.dto.user.PasswordResetReqDto;
 
 @RequiredArgsConstructor
 @Service

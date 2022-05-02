@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.blogv3.service.UserService;
 import site.metacoding.blogv3.util.UtilValid;
-import site.metacoding.blogv3.web.user.JoinReqDto;
-import site.metacoding.blogv3.web.user.PasswordResetReqDto;
+import site.metacoding.blogv3.web.dto.user.JoinReqDto;
+import site.metacoding.blogv3.web.dto.user.PasswordResetReqDto;
 
 @RequiredArgsConstructor
 @Controller
