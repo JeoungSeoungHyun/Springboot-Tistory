@@ -54,9 +54,9 @@ public class UserController {
 
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/s/user/{id}")
     public String updateForm(@PathVariable Integer id) {
-        return "/user/joinForm";
+        return "/user/updateForm";
     }
 
     @GetMapping("/user/password-reset-form")
