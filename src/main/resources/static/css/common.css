@@ -55,6 +55,14 @@
     display: none;
 }
 
+.my_icon_rounded_btn{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: rgb(185, 185, 185);
+}
+
 .my_secondary_btn {
     display: flex;
     align-items: center;
@@ -71,7 +79,12 @@
 }
 
 .my_atag_none {
-    text-decoration: none;
+    text-decoration-line: none;
+    color: black;
+}
+
+.my_atag_none:hover {
+    text-decoration-line: none;
 }
 
 .my_success_btn {
@@ -88,7 +101,21 @@
     margin: 5px 0;
 }
 
-.my_elipse {
+.my_active_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(255, 85, 68);
+    color: white;
+    margin: 5px 0;
+}
+
+.my_ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
 } 
