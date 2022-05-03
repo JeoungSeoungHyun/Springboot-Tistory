@@ -2,6 +2,7 @@ package site.metacoding.blogv3.util;
 
 public class Script {
 
+    // 성공시 알림 없이 이동시켜주기 위한 메서드 오버로딩
     public static String href(String url) {
         StringBuffer sb = new StringBuffer();
         sb.append("<script>");

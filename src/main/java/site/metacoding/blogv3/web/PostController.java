@@ -2,6 +2,8 @@ package site.metacoding.blogv3.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +27,9 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/s/post")
-    public String write(PostWriteReqDto postWriteReqDto, @AuthenticationPrincipal LoginUser loginUser) {
+    public String write(@Valid PostWriteReqDto postWriteReqDto, @AuthenticationPrincipal LoginUser loginUser) {
 
-        postService.게시글쓰기(postWriteReqDto);
+        postService.게시글쓰기(postWriteReqDto, loginUser.getUser());
 
         return "redirect:/user/" + loginUser.getUser().getId() + "/post";
     }
