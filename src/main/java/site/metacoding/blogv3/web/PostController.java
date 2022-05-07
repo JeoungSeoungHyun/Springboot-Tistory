@@ -28,6 +28,12 @@ public class PostController {
     // 카테고리와 게시글의 정보도 같이 들고 가야하기 때문에 CategorySerivce가 아닌 PostService에서 처리
     private final PostService postService;
 
+    @GetMapping("/user/{userId}/post/{postId}")
+    public String detail(Model model, @AuthenticationPrincipal LoginUser loginUser) {
+
+        return "/post/detail";
+    }
+
     @PostMapping("/s/post")
     public String write(@Valid PostWriteReqDto postWriteReqDto, @AuthenticationPrincipal LoginUser loginUser) {
 
