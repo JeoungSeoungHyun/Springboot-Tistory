@@ -10,7 +10,7 @@
     padding: 15px;
 }
 
-.my_navbar{
+.my_navbar {
     display: flex;
     justify-content: space-between;
     padding: 30px;
@@ -21,7 +21,7 @@
 }
 
 .my_dropdown_menu {
-    position: absolute !important; 
+    position: absolute !important;
 }
 
 .my_navbar_title {
@@ -36,7 +36,7 @@
 }
 
 .my_icon_btn:hover {
-    background-color:rgb(185,185,185);
+    background-color: rgb(185, 185, 185);
 }
 
 .my_profile_rounded_img {
@@ -56,7 +56,7 @@
     display: none;
 }
 
-.my_icon_rounded_btn{
+.my_icon_rounded_btn {
     width: 50px;
     height: 50px;
     border-radius: 25px;
@@ -70,13 +70,12 @@
     justify-content: center;
     border-radius: 10px;
     border: none;
-    background-color: rgb(185,185,185);
+    background-color: rgb(185, 185, 185);
     color: white;
     width: 100%;
     height: 20px;
     padding: 20px;
     margin: 5px 0;
-
 }
 
 .my_atag_none {
@@ -119,9 +118,19 @@
 .my_ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
-} 
+}
 
-@media (max-width: 420px) { 
+.my_text_two_line {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 40px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 420px) {
     .my_post_list_item {
         display: block !important;
     }
@@ -141,4 +150,3 @@
     font-size: 20px !important;
     font-weight: 600 !important;
 }
-
