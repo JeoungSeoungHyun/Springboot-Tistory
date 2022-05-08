@@ -132,6 +132,9 @@ public class PostService {
             pageNumbers.add(i);
         }
 
+        // 방문자 카운터 증가
+        Visit visitEntity = visitIncrease(pageOwnerId);
+
         PostRespDto postRespDto = new PostRespDto(
                 postsEntity,
                 categorysEntity,
@@ -139,14 +142,12 @@ public class PostService {
                 postsEntity.getNumber() - 1,
                 postsEntity.getNumber() + 1,
                 pageNumbers,
-                0L);
-
-        // 방문자 카운터 증가
-        visitIncrease(pageOwnerId);
+                visitEntity.getTotalCount());
 
         return postRespDto;
     }
 
+    @Transactional
     public PostRespDto 게시글카테고리별보기(int pageOwnerId, Integer categoryId, Pageable pageable) {
         Page<Post> postsEntity = postRepository.findByUserIdAndCategoryId(pageOwnerId, categoryId, pageable);
         List<Category> categorysEntity = categoryRepository.findByUserId(pageOwnerId);
@@ -156,6 +157,9 @@ public class PostService {
             pageNumbers.add(i);
         }
 
+        // 방문자 카운터 증가
+        Visit visitEntity = visitIncrease(pageOwnerId);
+
         PostRespDto postRespDto = new PostRespDto(
                 postsEntity,
                 categorysEntity,
@@ -163,10 +167,7 @@ public class PostService {
                 postsEntity.getNumber() - 1,
                 postsEntity.getNumber() + 1,
                 pageNumbers,
-                0L);
-
-        // 방문자 카운터 증가
-        visitIncrease(pageOwnerId);
+                visitEntity.getTotalCount());
 
         return postRespDto;
     }
@@ -194,12 +195,13 @@ public class PostService {
     }
 
     // 방문자수 증가
-    private void visitIncrease(Integer pageOwnerId) {
+    private Visit visitIncrease(Integer pageOwnerId) {
         Optional<Visit> visitOp = visitRepository.findById(pageOwnerId);
         if (visitOp.isPresent()) {
             Visit visitEntity = visitOp.get();
             Long totalCount = visitEntity.getTotalCount();
             visitEntity.setTotalCount(totalCount + 1);
+            return visitEntity;
         } else {
             log.error("미친 심각", "회원가입할때 Visit이 안 만들어지는 심각한 오류가 있습니다.");
             // sms 메시지 전송
