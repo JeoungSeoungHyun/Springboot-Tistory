@@ -77,12 +77,12 @@ updateDate
 - 검색
 - 글삭제(완료)
 - 글수정
-- 회원정보 수정 + 프로필 이미지 변경
+- 회원정보 수정 + 프로필 이미지 변경[사진업로드 코드](https://github.com/codingspecialist/Eazyup-Photogram/blob/master/src/main/resources/static/js/profile.js)
 - 댓글 (라이브러리 사용)
-
-### 로그관리 (Log4j)
-- 단위테스트시
-- 배포시
+- 좋아요
+- 로그관리 (Log4j)
+- 단위테스트
+- 배포
 - AOP 처리
 
 ### 페이징 참고

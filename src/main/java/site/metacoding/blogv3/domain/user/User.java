@@ -40,6 +40,9 @@ public class User {
     @Column(length = 20, nullable = false)
     private String email;
 
+    @Column(nullable = true)
+    private String profileImg;
+
     @CreatedDate
     private LocalDateTime createDate;
 
